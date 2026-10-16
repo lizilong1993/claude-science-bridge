@@ -1,0 +1,53 @@
+{
+  "source": "ccswitch",
+  "ccswitch": {
+    "db": "",
+    "app": "claude-desktop",
+    "provider": "current",
+    "transport": "direct"
+  },
+  "account": {
+    "name": "admin"
+  },
+  "gateway": {
+    "host": "127.0.0.1",
+    "port": 18992
+  },
+  "accountEmulation": {
+    "enabled": true,
+    "port": 18993,
+    "accountName": "admin",
+    "upstreamProxy": "http://127.0.0.1:7897",
+    "unmatchedAccountPathStatus": 404,
+    "interceptHosts": [
+      "claude.ai",
+      "api.anthropic.com",
+      "platform.claude.com",
+      "console.anthropic.com"
+    ]
+  },
+  "science": {
+    "dataDir": "",
+    "exePath": ""
+  },
+  "network": {
+    "allowedDomains": [
+      "api.anthropic.com",
+      "claude.ai",
+      "claude.com",
+      "console.anthropic.com",
+      "platform.claude.com",
+      "docs.anthropic.com",
+      "storage.googleapis.com"
+    ]
+  },
+  "custom": {
+    "preset": "",
+    "type": "anthropic",
+    "baseUrl": "",
+    "apiKey": "",
+    "model": "",
+    "models": [],
+    "fallback": ""
+  }
+}

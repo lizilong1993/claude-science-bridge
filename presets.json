@@ -1,0 +1,73 @@
+{
+  "_note": "baseUrl 取自 cc-switch 的 Claude Desktop 预设目录（src/config/claudeDesktopProviderPresets.ts），非臆测。",
+  "deepseek": {
+    "label": "DeepSeek",
+    "type": "anthropic",
+    "baseUrl": "https://api.deepseek.com/anthropic"
+  },
+  "kimi": {
+    "label": "Kimi / Moonshot",
+    "type": "anthropic",
+    "baseUrl": "https://api.moonshot.cn/anthropic"
+  },
+  "kimi-global": {
+    "label": "Kimi Global",
+    "type": "anthropic",
+    "baseUrl": "https://api.moonshot.ai/anthropic"
+  },
+  "glm": {
+    "label": "Zhipu GLM",
+    "type": "anthropic",
+    "baseUrl": "https://open.bigmodel.cn/api/anthropic"
+  },
+  "glm-intl": {
+    "label": "Zhipu GLM (intl)",
+    "type": "anthropic",
+    "baseUrl": "https://api.z.ai/api/anthropic"
+  },
+  "qwen": {
+    "label": "Qwen / DashScope",
+    "type": "anthropic",
+    "baseUrl": "https://dashscope-intl.aliyuncs.com/apps/anthropic"
+  },
+  "siliconflow": {
+    "label": "SiliconFlow",
+    "type": "anthropic",
+    "baseUrl": "https://api.siliconflow.cn"
+  },
+  "openrouter": {
+    "label": "OpenRouter",
+    "type": "anthropic",
+    "baseUrl": "https://openrouter.ai/api"
+  },
+  "doubao": {
+    "label": "Volcengine Doubao",
+    "type": "anthropic",
+    "baseUrl": "https://ark.cn-beijing.volces.com/api/compatible"
+  },
+  "ppio": {
+    "label": "PPIO",
+    "type": "anthropic",
+    "baseUrl": "https://api.ppio.com/anthropic"
+  },
+  "mimo": {
+    "label": "Xiaomi MiMo",
+    "type": "anthropic",
+    "baseUrl": "https://api.xiaomimimo.com/anthropic"
+  },
+  "longcat": {
+    "label": "Longcat",
+    "type": "anthropic",
+    "baseUrl": "https://api.longcat.chat/anthropic"
+  },
+  "groq": {
+    "label": "Groq",
+    "type": "openai",
+    "baseUrl": "https://api.groq.com/openai/v1"
+  },
+  "mistral": {
+    "label": "Mistral AI",
+    "type": "openai",
+    "baseUrl": "https://api.mistral.ai"
+  }
+}
