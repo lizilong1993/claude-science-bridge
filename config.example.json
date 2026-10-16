@@ -3,7 +3,7 @@
   "ccswitch": {
     "db": "",
     "app": "claude-desktop",
-    "provider": "current",
+    "provider": "first",
     "transport": "direct"
   },
   "account": {
@@ -19,6 +19,7 @@
     "accountName": "admin",
     "upstreamProxy": "http://127.0.0.1:7897",
     "unmatchedAccountPathStatus": 404,
+    "emulateSkillRegistry": true,
     "interceptHosts": [
       "claude.ai",
       "api.anthropic.com",
