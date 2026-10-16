@@ -125,6 +125,9 @@ Full annotated defaults: [`config.example.json`](config.example.json).
   this build — this is not affected by the bridge.
 - Claude Science requires its data directory to be on an **NTFS** volume: its Windows sandbox needs ACLs.
   On exFAT and similar filesystems the app refuses to start with `Sandbox unavailable … FILE_PERSISTENT_ACLS absent`.
+- The in-app **microphone / dictation** button uses the browser `SpeechRecognition` API, which is not
+  available in this Electron build, so it reports "Microphone access is blocked" and stays disabled.
+  This is the same with or without the bridge — the bridge never intercepts voice traffic.
 - Tested against Claude Science **0.1.63**. A future client update may change these interfaces.
 - Keep `config.json` private: it may contain your API key. It is git-ignored by default.
 

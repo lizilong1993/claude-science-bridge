@@ -120,6 +120,8 @@ Claude Science Bridge 把 **Windows 上的 Claude Science 桌面版**接到**你
   `self-awareness`、`compute-env-setup` 等）属于内部技能，该构建不会展示——这与本桥接工具无关。
 - Claude Science 的数据目录必须在 **NTFS** 卷上：它的 Windows 沙箱需要 ACL。
   放在 exFAT 等文件系统上会启动失败并报 `Sandbox unavailable … FILE_PERSISTENT_ACLS absent`。
+- 界面上的**麦克风 / 听写**按钮依赖浏览器的 `SpeechRecognition` API，该能力在此 Electron 构建中不可用，
+  因此会提示「Microphone access is blocked」并保持禁用。这与桥接无关，桥接不会拦截任何语音流量。
 - 实测基于 Claude Science **0.1.63**，客户端升级后这些接口可能变化。
 - `config.json` 里可能有你的 API Key，默认已被 `.gitignore` 忽略，请勿提交。
 
