@@ -101,7 +101,7 @@ Claude Science Bridge 把 **Windows 上的 Claude Science 桌面版**接到**你
 | `custom.model` / `models` | 四档角色共用一个模型，或逐档映射 |
 | `lifecycle.stopWithApp` | `true`（默认）：退出 Claude Science 时一并停掉网关与本地代理 |
 | `gateway.port` / `accountEmulation.*` | 本地端口，通常不用改 |
-| `science.exePath` / `dataDir` | 留空即用默认安装路径与 `%USERPROFILE%\.claude-science` |
+| `science.exePath` / `dataDir` | 留空即用默认安装路径，并**跟随** Claude Science 自己的数据目录（读它的 `config.toml`，因此在应用内移动数据目录后依然可用） |
 
 带注释的完整默认值见 [`config.example.json`](config.example.json)。
 
@@ -118,6 +118,8 @@ Claude Science Bridge 把 **Windows 上的 Claude Science 桌面版**接到**你
 - 技能页面显示的是 **Claude Science 自己精选的 Featured 集**（实测构建里为 16 个，应用内分为
   Featured / Imported / Organization / Personal 四类）。磁盘上其它技能目录（`customize`、`skill-creator`、
   `self-awareness`、`compute-env-setup` 等）属于内部技能，该构建不会展示——这与本桥接工具无关。
+- Claude Science 的数据目录必须在 **NTFS** 卷上：它的 Windows 沙箱需要 ACL。
+  放在 exFAT 等文件系统上会启动失败并报 `Sandbox unavailable … FILE_PERSISTENT_ACLS absent`。
 - 实测基于 Claude Science **0.1.63**，客户端升级后这些接口可能变化。
 - `config.json` 里可能有你的 API Key，默认已被 `.gitignore` 忽略，请勿提交。
 

@@ -105,7 +105,7 @@ To map each model role separately, use `custom.models` instead of `custom.model`
 | `custom.model` / `models` | One upstream model for all roles, or a per-role mapping |
 | `lifecycle.stopWithApp` | `true` (default): stopping Claude Science also stops the gateway and local proxy |
 | `gateway.port` / `accountEmulation.*` | Local ports; usually leave as is |
-| `science.exePath` / `dataDir` | Leave empty for the default install and `%USERPROFILE%\.claude-science` |
+| `science.exePath` / `dataDir` | Leave empty to use the default install and to **follow** Claude Science's own data directory (read from its `config.toml`, so moving the data dir inside the app keeps working) |
 
 Full annotated defaults: [`config.example.json`](config.example.json).
 
@@ -123,6 +123,8 @@ Full annotated defaults: [`config.example.json`](config.example.json).
   split by the app into Featured / Imported / Organization / Personal). Other skill folders present on disk
   (`customize`, `skill-creator`, `self-awareness`, `compute-env-setup`, …) are internal and are not surfaced by
   this build — this is not affected by the bridge.
+- Claude Science requires its data directory to be on an **NTFS** volume: its Windows sandbox needs ACLs.
+  On exFAT and similar filesystems the app refuses to start with `Sandbox unavailable … FILE_PERSISTENT_ACLS absent`.
 - Tested against Claude Science **0.1.63**. A future client update may change these interfaces.
 - Keep `config.json` private: it may contain your API key. It is git-ignored by default.
 
