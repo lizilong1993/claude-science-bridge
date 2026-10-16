@@ -17,7 +17,7 @@
     "stopWithApp": true
   },
   "accountEmulation": {
-    "enabled": false,
+    "enabled": true,
     "port": 18993,
     "accountName": "admin",
     "upstreamProxy": "http://127.0.0.1:7897",

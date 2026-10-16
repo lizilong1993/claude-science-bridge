@@ -85,7 +85,7 @@ Claude Science Bridge 把 **Windows 上的 Claude Science 桌面版**接到**你
 | --- | --- |
 | 停止桥接 | **退出 Claude Science 即可** —— 网关与本地代理会自动停止；`stop.cmd` 可一次性全停 |
 | 还原开始菜单快捷方式 | `uninstall.cmd` |
-| 信任 / 取消信任本地 CA（可选） | `trust-ca.cmd` / `untrust-ca.cmd` —— 仅账号仿真需要 |
+| 信任 / 取消信任本地 CA | `trust-ca.cmd` / `untrust-ca.cmd`（`install.cmd` / `uninstall.cmd` 已自动处理） |
 | 手工启动（排错用） | `start.cmd` |
 | 回到真实 Claude 账号 | 先停止桥接，删除 `%USERPROFILE%\.claude-science` 下的 `.oauth-tokens/` 与 `active-org.json`，再正常启动 Science |
 
@@ -107,11 +107,12 @@ Claude Science Bridge 把 **Windows 上的 Claude Science 桌面版**接到**你
 
 ### 说明与限制
 
-- **账号仿真默认关闭。** 它通过在本地应答少量 `claude.ai` 接口，让账号横幅与账号面板表现得像已登录。
-  它能生效的前提是 Claude Science 信任本工具的本地 CA —— 该应用的原生 TLS 读取 Windows 证书库，
-  所以需要先运行一次 **`trust-ca.cmd`**（当前用户级、无需管理员、可用 `untrust-ca.cmd` 移除），
-  再把 `accountEmulation.enabled` 设为 `true`。
-- 不开启时应用照常可用，只是账号横幅可能提示会话过期（属外观问题）；对话、MCP 连接器与本地 skills 都不受影响。
+- **账号仿真默认开启。** 它通过在本地应答少量 `claude.ai` 接口，让账号横幅与账号面板表现得像已登录。
+  生效前提是 Claude Science 信任本工具的本地 CA —— 该应用的原生 TLS 读取 Windows 证书库，
+  因此 `install.cmd` 会把它加入**当前用户**的根证书库（用户级、无需管理员）；
+  `uninstall.cmd` 会移除它，`trust-ca.cmd` / `untrust-ca.cmd` 可手动操作。
+- 想关闭仿真：把 `config.json` 的 `accountEmulation.enabled` 设为 `false`。
+  对话、MCP 连接器与本地 skills 两种情况都可用，只有账号横幅与账号面板受影响。
 - Directory connectors（Anthropic 托管的目录）显示为空 —— 这是虚拟账号的真实状态；
   **Featured** 里那批内置连接器可以正常使用。
 - 实测基于 Claude Science **0.1.63**，客户端升级后这些接口可能变化。

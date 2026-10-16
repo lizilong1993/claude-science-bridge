@@ -89,7 +89,7 @@ To map each model role separately, use `custom.models` instead of `custom.model`
 | --- | --- |
 | Stop the bridge | Just exit Claude Science — the gateway and local proxy stop automatically. Or run `stop.cmd` to stop everything at once. |
 | Restore the Start Menu shortcut | `uninstall.cmd` |
-| Trust / untrust the local CA (optional) | `trust-ca.cmd` / `untrust-ca.cmd` — only needed for account emulation |
+| Trust / untrust the local CA | `trust-ca.cmd` / `untrust-ca.cmd` (also done by `install.cmd` / `uninstall.cmd`) |
 | Start manually (troubleshooting) | `start.cmd` |
 | Go back to a real Claude account | Stop the bridge, delete `.oauth-tokens/` and `active-org.json` under `%USERPROFILE%\.claude-science`, then start Science normally |
 
@@ -111,12 +111,12 @@ Full annotated defaults: [`config.example.json`](config.example.json).
 
 ### Notes and limits
 
-- **Account emulation is off by default.** It makes the account banner and account panels behave as if signed in
-  by answering a few `claude.ai` endpoints locally. It only works if Claude Science trusts this tool's local CA —
-  the app's native TLS stack reads the Windows certificate store, so run **`trust-ca.cmd`** once (per-user, no admin,
-  removable with `untrust-ca.cmd`) and set `accountEmulation.enabled` to `true`.
-- Without it the app still works; the account banner may just say the session expired (cosmetic).
-  Chat, MCP connectors, and local skills are not affected either way.
+- **Account emulation is on by default.** It answers a few `claude.ai` endpoints locally so the account banner and
+  account panels behave as if signed in. This requires Claude Science to trust this tool's local CA — the app's
+  native TLS stack reads the Windows certificate store, so `install.cmd` adds the CA to **your user** root store
+  (per-user, no admin). `uninstall.cmd` removes it; `trust-ca.cmd` / `untrust-ca.cmd` do it manually.
+- To turn the emulation off, set `accountEmulation.enabled` to `false` in `config.json`. Chat, MCP connectors and
+  local skills work either way; only the account banner and account panels are affected.
 - Directory connectors (Anthropic-hosted directory) appear empty — that is the true state of a virtual account.
   The bundled connectors under **Featured** do work.
 - Tested against Claude Science **0.1.63**. A future client update may change these interfaces.
