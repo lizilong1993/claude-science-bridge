@@ -1,5 +1,5 @@
 Option Explicit
-' 无窗口启动 bridge（安装.cmd 会把开始菜单快捷方式指到这里）
+' 无窗口启动 bridge（install.cmd 会把开始菜单快捷方式指到这里）
 Dim sh, fso, root, cmd
 Set sh = CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")

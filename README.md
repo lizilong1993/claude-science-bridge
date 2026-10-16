@@ -27,7 +27,7 @@ does not insist on a Claude account. **Your Claude Science installation is never
 | **Use your own models** | Map Science's model roles to upstream models from DeepSeek, Kimi, GLM, Qwen, SiliconFlow, OpenRouter, or any Anthropic / OpenAI-compatible endpoint. |
 | **Reuse cc-switch** (recommended) | Use the first provider in your Claude Desktop list, or pick any other by name. |
 | **Or skip cc-switch** | Configure an endpoint directly with built-in presets or a custom `baseUrl`. |
-| **One-time setup** | `安装.cmd` points the Start Menu shortcut at the bridge, then every normal launch just works. |
+| **One-time setup** | `install.cmd` points the Start Menu shortcut at the bridge, then every normal launch just works. |
 | **No build step** | Plain Node.js scripts, **zero npm dependencies**, no Rust / VS / Tauri toolchain. |
 
 > An independent community tool. It does not include Claude Science, API keys, subscriptions, or model quota,
@@ -51,9 +51,9 @@ and unzip it anywhere, for example `D:\claude-science-bridge`.
 ### Method A — reuse cc-switch (recommended)
 
 1. In cc-switch, configure a **Claude Desktop** provider: endpoint, API key, and model mapping.
-2. In the unzipped folder, run **`列provider.cmd`** to list the available providers and their model mapping.
-3. Double-click **`安装.cmd`** — **only once**. It points the Start Menu shortcut "Claude Science" at this bridge
-   (the original shortcut is backed up; `卸载.cmd` restores it).
+2. In the unzipped folder, run **`list-providers.cmd`** to list the available providers and their model mapping.
+3. Double-click **`install.cmd`** — **only once**. It points the Start Menu shortcut "Claude Science" at this bridge
+   (the original shortcut is backed up; `uninstall.cmd` restores it).
 4. From now on, just start **Claude Science** from the Start Menu. The bridge starts automatically every time.
 5. In Science, pick a model in the model selector and send a message.
 
@@ -87,9 +87,10 @@ To map each model role separately, use `custom.models` instead of `custom.model`
 
 | Action | How |
 | --- | --- |
-| Stop the bridge | Just exit Claude Science — the gateway and local proxy stop automatically. Or run `停止.cmd` to stop everything at once. |
-| Restore the Start Menu shortcut | `卸载.cmd` |
-| Start manually (troubleshooting) | `启动.cmd` |
+| Stop the bridge | Just exit Claude Science — the gateway and local proxy stop automatically. Or run `stop.cmd` to stop everything at once. |
+| Restore the Start Menu shortcut | `uninstall.cmd` |
+| Trust / untrust the local CA (optional) | `trust-ca.cmd` / `untrust-ca.cmd` — only needed for account emulation |
+| Start manually (troubleshooting) | `start.cmd` |
 | Go back to a real Claude account | Stop the bridge, delete `.oauth-tokens/` and `active-org.json` under `%USERPROFILE%\.claude-science`, then start Science normally |
 
 ### config.json quick reference
@@ -110,8 +111,12 @@ Full annotated defaults: [`config.example.json`](config.example.json).
 
 ### Notes and limits
 
-- Account-level endpoints that are not emulated fail fast; the app log may show `claudeAiFetch: 401`.
-  This does **not** affect chat, MCP connectors, or local skills.
+- **Account emulation is off by default.** It makes the account banner and account panels behave as if signed in
+  by answering a few `claude.ai` endpoints locally. It only works if Claude Science trusts this tool's local CA —
+  the app's native TLS stack reads the Windows certificate store, so run **`trust-ca.cmd`** once (per-user, no admin,
+  removable with `untrust-ca.cmd`) and set `accountEmulation.enabled` to `true`.
+- Without it the app still works; the account banner may just say the session expired (cosmetic).
+  Chat, MCP connectors, and local skills are not affected either way.
 - Directory connectors (Anthropic-hosted directory) appear empty — that is the true state of a virtual account.
   The bundled connectors under **Featured** do work.
 - Tested against Claude Science **0.1.63**. A future client update may change these interfaces.
