@@ -115,6 +115,9 @@ Claude Science Bridge 把 **Windows 上的 Claude Science 桌面版**接到**你
   对话、MCP 连接器与本地 skills 两种情况都可用，只有账号横幅与账号面板受影响。
 - Directory connectors（Anthropic 托管的目录）显示为空 —— 这是虚拟账号的真实状态；
   **Featured** 里那批内置连接器可以正常使用。
+- 技能页面显示的是 **Claude Science 自己精选的 Featured 集**（实测构建里为 16 个，应用内分为
+  Featured / Imported / Organization / Personal 四类）。磁盘上其它技能目录（`customize`、`skill-creator`、
+  `self-awareness`、`compute-env-setup` 等）属于内部技能，该构建不会展示——这与本桥接工具无关。
 - 实测基于 Claude Science **0.1.63**，客户端升级后这些接口可能变化。
 - `config.json` 里可能有你的 API Key，默认已被 `.gitignore` 忽略，请勿提交。
 

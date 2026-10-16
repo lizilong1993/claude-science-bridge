@@ -119,6 +119,10 @@ Full annotated defaults: [`config.example.json`](config.example.json).
   local skills work either way; only the account banner and account panels are affected.
 - Directory connectors (Anthropic-hosted directory) appear empty — that is the true state of a virtual account.
   The bundled connectors under **Featured** do work.
+- The Skills page shows a **Featured** set curated by Claude Science itself (16 entries in the tested build,
+  split by the app into Featured / Imported / Organization / Personal). Other skill folders present on disk
+  (`customize`, `skill-creator`, `self-awareness`, `compute-env-setup`, …) are internal and are not surfaced by
+  this build — this is not affected by the bridge.
 - Tested against Claude Science **0.1.63**. A future client update may change these interfaces.
 - Keep `config.json` private: it may contain your API key. It is git-ignored by default.
 
