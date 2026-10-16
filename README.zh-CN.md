@@ -83,7 +83,7 @@ Claude Science Bridge 把 **Windows 上的 Claude Science 桌面版**接到**你
 
 | 操作 | 方式 |
 | --- | --- |
-| 停止桥接 | `停止.cmd`（同时停掉网关、本地代理与 Science） |
+| 停止桥接 | **退出 Claude Science 即可** —— 网关与本地代理会自动停止；`停止.cmd` 可一次性全停 |
 | 还原开始菜单快捷方式 | `卸载.cmd` |
 | 手工启动（排错用） | `启动.cmd` |
 | 回到真实 Claude 账号 | 先停止桥接，删除 `%USERPROFILE%\.claude-science` 下的 `.oauth-tokens/` 与 `active-org.json`，再正常启动 Science |
@@ -98,6 +98,7 @@ Claude Science Bridge 把 **Windows 上的 Claude Science 桌面版**接到**你
 | `account.name` | Science 里显示的虚拟账户名（默认 `admin`） |
 | `custom.preset` / `baseUrl` / `type` / `apiKey` | 自定义上游端点 |
 | `custom.model` / `models` | 四档角色共用一个模型，或逐档映射 |
+| `lifecycle.stopWithApp` | `true`（默认）：退出 Claude Science 时一并停掉网关与本地代理 |
 | `gateway.port` / `accountEmulation.*` | 本地端口，通常不用改 |
 | `science.exePath` / `dataDir` | 留空即用默认安装路径与 `%USERPROFILE%\.claude-science` |
 

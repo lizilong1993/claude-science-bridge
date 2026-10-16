@@ -87,7 +87,7 @@ To map each model role separately, use `custom.models` instead of `custom.model`
 
 | Action | How |
 | --- | --- |
-| Stop the bridge | `停止.cmd` (stops gateway, local proxy, and Science) |
+| Stop the bridge | Just exit Claude Science — the gateway and local proxy stop automatically. Or run `停止.cmd` to stop everything at once. |
 | Restore the Start Menu shortcut | `卸载.cmd` |
 | Start manually (troubleshooting) | `启动.cmd` |
 | Go back to a real Claude account | Stop the bridge, delete `.oauth-tokens/` and `active-org.json` under `%USERPROFILE%\.claude-science`, then start Science normally |
@@ -102,6 +102,7 @@ To map each model role separately, use `custom.models` instead of `custom.model`
 | `account.name` | Virtual account name shown in Science (default `admin`) |
 | `custom.preset` / `baseUrl` / `type` / `apiKey` | Custom upstream endpoint |
 | `custom.model` / `models` | One upstream model for all roles, or a per-role mapping |
+| `lifecycle.stopWithApp` | `true` (default): stopping Claude Science also stops the gateway and local proxy |
 | `gateway.port` / `accountEmulation.*` | Local ports; usually leave as is |
 | `science.exePath` / `dataDir` | Leave empty for the default install and `%USERPROFILE%\.claude-science` |
 
